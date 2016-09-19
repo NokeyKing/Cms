@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <!-- 顶部公共css和js -->
+      <% include top.ejs%>
+      <!-- 顶部公共css和js -->
+  </head>
+  <body>
+  <!-- 公共头部 -->
+  <% include header.ejs%>
+  <!-- 公共头部 -->
+
+  <div class="ch-container">
+          <div class="row">
+
+              <!-- 左侧 -->
+              <% include left.ejs%>
+              <!-- 左侧 -->
+
+              <div id="content" class="col-lg-10 col-sm-10">
+                  <!-- 面包 -->
+                  <div>
+                      <ul class="breadcrumb">
+                          <li>
+                              <a href="/admin/">Home</a>
+                          </li>
+                          <li>
+                              <a href="/admin/categoryList/">CategoryList</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <!-- 面包 -->
+                  <% - message %>
+                  <!-- 类别列表 -->
+                  <div class="row">
+                      <div class="box col-md-12">
+                          <div class="box-inner">
+                              <div class="box-header well" data-original-title="">
+                                  <h2><i class="glyphicon glyphicon-user"></i> <%=title%></h2>
+
+                                  <div class="box-icon">
+                                      <a href="/admin/addUpload" style="color: #2fa4e7;clear: none;float: left;margin: 0 2px;height: 20px;width: 5px;margin-top: 1px;font-size: 12px;padding-top: 4px; margin-right: 10px;"><i class="glyphicon glyphicon-edit"></i></a>
+                                      <a href="javascript:;" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                      <a href="javascript:;" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                                  </div>
+                              </div>
+                              <div class="box-content">
+                                  <!-- 列表开始 -->
+                                  <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                                      <thead>
+                                      <tr>
+                                          <th>名称</th>
+                                          <th>存储路径</th>
+                                          <th>使用路径</th>
+                                          <th width="280">时间</th>
+                                          <th>添加人</th>
+                                          <th>操作</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                      <%uploadData.forEach(function (data) {%>
+                                      <tr>
+                                          <td class="center"><%=data.title%></td>
+                                          <td class="center"><%=data.url%></td>
+                                          <td class="center"><%=data.urlUse%></td>
+                                          <td class="center"><%=data.createTime%></td>
+                                          <td class="center"><%=data.person%></td>
+                                          <td class="center">
+                                              <a class="btn btn-danger" href="/admin/delUpload/<%= data.id%>">
+                                                  <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                  Delete
+                                              </a>
+                                          </td>
+                                      </tr>
+                                      <%})%>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                      <!--/span-->
+
+                  </div>
+                  <!-- 类别列表 -->
+              </div>
+          </div>
+          <% include footer.ejs%>
+      </div>
+
+  <!-- 底部公共css和js -->
+  <% include bottom.ejs%>
+  <!-- 底部公共css和js -->
+  </body>
+</html>

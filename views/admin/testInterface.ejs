@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 顶部公共css和js -->
+    <% include top.ejs%>
+    <!-- 顶部公共css和js -->
+</head>
+<body>
+<h1>测试接口页面</h1>
+<% - message%>
+<div id="testInterface"></div>
+<a href="/admin/">返回首页</a>
+<script>
+$(function () {
+    $.ajax({
+        url:'/admin/interface/',
+        data:'a=0',
+        success : function (data) {
+            console.log(data);
+            $('#testInterface').html(data);
+        }
+    })
+})
+</script>
+</body>
+</html>

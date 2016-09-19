@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/admin/js/angular.min.js"></script>
+</head>
+<body>
+<h1>ng1测试页面</h1>
+<div ng-app="myApp" ng-controller="myCtrl">
+
+    名: <input type="text" ng-model="firstName"><br>
+    姓: <input type="text" ng-model="lastName"><br>
+    <br>
+    姓名: {{firstName + " " + lastName}}
+
+</div>
+<a href="/admin/">返回首页</a>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope,$http) {
+        $scope.firstName= "John";
+        $http.get("/admin/interface/").success(
+                function (response) {
+                    $scope.lastName = response;
+                });
+    });
+</script>
+</body>
+</html>
